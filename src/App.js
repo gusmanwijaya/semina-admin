@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Speaker from "./pages/Speaker";
+import SignIn from "./pages/SignIn";
+import Category from "./pages/Category";
+import CategoryCreate from "./pages/Category/create";
+import CategoryEdit from "./pages/Category/edit";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Navbar />
+      <br />
+      <Routes>
+        <Route path="/sign-in" element={<SignIn />} />
+        <Route path="/categories" element={<Category />} />
+        <Route path="/categories/create" element={<CategoryCreate />} />
+        <Route path="/categories/edit/:categoryId" element={<CategoryEdit />} />
+        <Route path="/speakers" element={<Speaker />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
