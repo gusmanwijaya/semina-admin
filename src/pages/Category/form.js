@@ -3,7 +3,7 @@ import { Form } from "react-bootstrap";
 import Button from "../../components/Button";
 import TextInputWithLabel from "../../components/TextInputWithLabel";
 
-const CategoryForm = ({ handleSubmit, form, handleChange }) => {
+const CategoryForm = ({ handleSubmit, form, handleChange, isLoading }) => {
   return (
     <Form>
       <TextInputWithLabel
@@ -14,8 +14,8 @@ const CategoryForm = ({ handleSubmit, form, handleChange }) => {
         type="text"
         onChange={handleChange}
       />
-      <Button variant="primary" action={handleSubmit}>
-        Submit
+      <Button variant="primary" action={handleSubmit} loading={isLoading}>
+        Simpan
       </Button>
     </Form>
   );

@@ -14,17 +14,17 @@ const Edit = () => {
   };
 
   const handleSubmit = () => {
-    // action simpan categories
+    // action simpan category
   };
 
   return (
     <Container>
       <BreadCrumb
-        textSecond={"Categories"}
-        urlSecond={"/categories"}
+        textSecond={"Category"}
+        urlSecond={"/category"}
         textThird="Edit"
       />
-      <Alert type="danger" message={"Nama kategori tidak boleh kosong"} />
+      {/* <Alert type="danger" message={"Nama kategori tidak boleh kosong"} /> */}
       <Form
         form={form}
         handleChange={handleChange}

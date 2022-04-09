@@ -12,15 +12,11 @@ const ComponentNavbar = () => {
       <Container>
         <Navbar.Brand>Dashboard</Navbar.Brand>
         <Nav className="me-auto">
-          <NavLink action={() => navigate("/categories")}>Categories</NavLink>
-          <NavLink action={() => navigate("/speakers")}>Speakers</NavLink>
-          <NavLink action={() => navigate("/events")}>Events</NavLink>
-          <NavLink action={() => navigate("/participants")}>
-            Participants
-          </NavLink>
-          <NavLink action={() => navigate("/transactions")}>
-            Transactions
-          </NavLink>
+          <NavLink action={() => navigate("/category")}>Category</NavLink>
+          <NavLink action={() => navigate("/speaker")}>Speaker</NavLink>
+          <NavLink action={() => navigate("/event")}>Event</NavLink>
+          <NavLink action={() => navigate("/participant")}>Participant</NavLink>
+          <NavLink action={() => navigate("/transaction")}>Transaction</NavLink>
         </Nav>
         <Nav>
           {!isLogin && (

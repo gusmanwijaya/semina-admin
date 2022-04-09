@@ -8,9 +8,16 @@ const ComponentButton = ({
   size,
   loading,
   disabled,
+  className,
 }) => {
   return (
-    <Button variant={variant} size={size} disabled={disabled} onClick={action}>
+    <Button
+      className={className}
+      variant={variant}
+      size={size}
+      disabled={disabled}
+      onClick={action}
+    >
       {loading ? "Loading..." : children}
     </Button>
   );
