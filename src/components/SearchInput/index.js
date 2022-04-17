@@ -1,14 +1,14 @@
 import React from "react";
 import { Form } from "react-bootstrap";
 
-const SearchInput = ({ handleChange, query }) => {
+const SearchInput = ({ handleChange, value, name, placeholder }) => {
   return (
     <Form.Group className="mb-3">
       <Form.Control
         type="text"
-        placeholder="Masukkan pencarian disini"
-        value={query}
-        name="query"
+        placeholder={placeholder}
+        value={value}
+        name={name}
         onChange={handleChange}
       />
     </Form.Group>

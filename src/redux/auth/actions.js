@@ -10,7 +10,6 @@ const userSignIn = (token, role, username) => {
 };
 
 const userSignOut = () => {
-  localStorage.removeItem("auth");
   return {
     type: USER_SIGNOUT,
   };

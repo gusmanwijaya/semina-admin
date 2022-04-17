@@ -14,7 +14,7 @@ const getData = async (url, params) => {
   });
 };
 
-const postData = async (url, payload) => {
+const postData = async (url, payload, formData) => {
   let { token } = localStorage.getItem("auth")
     ? JSON.parse(localStorage.getItem("auth"))
     : {};
@@ -22,11 +22,12 @@ const postData = async (url, payload) => {
   return await axios.post(`${config.API_HOST}/${url}`, payload, {
     headers: {
       Authorization: `Bearer ${token}`,
+      "Content-Type": formData ? "multipart/form-data" : "application/json",
     },
   });
 };
 
-const putData = async (url, payload) => {
+const putData = async (url, payload, formData) => {
   let { token } = localStorage.getItem("auth")
     ? JSON.parse(localStorage.getItem("auth"))
     : {};
@@ -34,11 +35,12 @@ const putData = async (url, payload) => {
   return await axios.put(`${config.API_HOST}/${url}`, payload, {
     headers: {
       Authorization: `Bearer ${token}`,
+      "Content-Type": formData ? "multipart/form-data" : "application/json",
     },
   });
 };
 
-const patchData = async (url, payload) => {
+const patchData = async (url, payload, formData) => {
   let { token } = localStorage.getItem("auth")
     ? JSON.parse(localStorage.getItem("auth"))
     : {};
@@ -46,6 +48,7 @@ const patchData = async (url, payload) => {
   return await axios.patch(`${config.API_HOST}/${url}`, payload, {
     headers: {
       Authorization: `Bearer ${token}`,
+      "Content-Type": formData ? "multipart/form-data" : "application/json",
     },
   });
 };

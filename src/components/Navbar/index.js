@@ -1,11 +1,20 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import NavLink from "../NavLink";
+import { useDispatch } from "react-redux";
+import { userSignOut } from "../../redux/auth/actions";
 
-const ComponentNavbar = () => {
+const ComponentNavbar = ({ payload }) => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const isLogin = false;
+
+  const onLogout = () => {
+    dispatch(userSignOut());
+    localStorage.clear();
+    navigate("/");
+  };
 
   return (
     <Navbar bg="light" variant="light">
@@ -19,11 +28,8 @@ const ComponentNavbar = () => {
           <NavLink action={() => navigate("/transaction")}>Transaction</NavLink>
         </Nav>
         <Nav>
-          {!isLogin && (
-            <NavLink action={() => navigate("/sign-in")}>Sign In</NavLink>
-          )}
+          <NavLink action={onLogout}>{payload?.name}</NavLink>
         </Nav>
-        <Nav>{isLogin && <NavLink>Username</NavLink>}</Nav>
       </Container>
     </Navbar>
   );

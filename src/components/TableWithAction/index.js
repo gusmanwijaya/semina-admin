@@ -14,6 +14,8 @@ const TableWithAction = ({
   deleteAction,
   pages,
   customAction,
+  status,
+  directoryImage,
 }) => {
   return (
     <Table striped bordered hover>
@@ -25,6 +27,8 @@ const TableWithAction = ({
         deleteAction={deleteAction}
         actionNotDisplay={actionNotDisplay}
         customAction={customAction}
+        status={status}
+        directoryImage={directoryImage}
       />
     </Table>
   );

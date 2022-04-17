@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import BreadCrumb from "../../components/BreadCrumb";
 import Alert from "../../components/Alert";
@@ -44,13 +45,16 @@ const Create = () => {
     }
   };
 
+  useEffect(() => {
+    let { token } = localStorage.getItem("auth")
+      ? JSON.parse(localStorage.getItem("auth"))
+      : {};
+    if (!token) return navigate("/");
+  }, []);
+
   return (
     <Container>
-      <BreadCrumb
-        textSecond={"Category"}
-        urlSecond={"/category"}
-        textThird="Create"
-      />
+      <BreadCrumb text={"Category"} urlText={"/category"} textSecond="Create" />
       {notification.status && (
         <Alert
           type={notification.typeNotification}

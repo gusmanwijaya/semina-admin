@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import { Card, Container } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
@@ -8,6 +9,7 @@ import { useDispatch } from "react-redux";
 import { userSignIn } from "../../redux/auth/actions";
 import { setNotification } from "../../redux/notification/actions";
 import { useSelector } from "react-redux";
+import jwtDecode from "jwt-decode";
 
 const SignIn = () => {
   const dispatch = useDispatch();
@@ -33,7 +35,10 @@ const SignIn = () => {
     setIsLoading(true);
     try {
       const response = await postData(`api/v1/auth/user/sign-in`, form);
-      dispatch(userSignIn(response?.data?.data?.token, "role", "username"));
+      const payload = jwtDecode(response?.data?.data?.token);
+      dispatch(
+        userSignIn(response?.data?.data?.token, payload?.role, payload?.name)
+      );
       setIsLoading(false);
       navigate("/category");
     } catch (error) {
@@ -47,7 +52,7 @@ const SignIn = () => {
       ? JSON.parse(localStorage.getItem("auth"))
       : {};
     if (token) return navigate(-1);
-  }, [navigate]);
+  }, []);
 
   return (
     <Container md={12} className="vh-100">

@@ -16,6 +16,7 @@ const reducers = (state = initialState, action) => {
 
     case USER_SIGNOUT:
       return {
+        ...state,
         token: null,
         role: null,
         username: null,

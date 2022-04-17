@@ -2,19 +2,18 @@ import React from "react";
 import { Breadcrumb } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
-const ComponentBreadCrumb = ({ textSecond, textThird, urlSecond }) => {
+const ComponentBreadCrumb = ({ text, textSecond, urlText }) => {
   const navigate = useNavigate();
 
   return (
     <Breadcrumb className="my-2">
-      <Breadcrumb.Item onClick={() => navigate(`/`)}>Home</Breadcrumb.Item>
-      {!textThird && <Breadcrumb.Item active>{textSecond}</Breadcrumb.Item>}
-      {textThird && (
-        <Breadcrumb.Item onClick={() => navigate(urlSecond)}>
-          {textSecond}
+      {!textSecond && <Breadcrumb.Item active>{text}</Breadcrumb.Item>}
+      {textSecond && (
+        <Breadcrumb.Item onClick={() => navigate(urlText)}>
+          {text}
         </Breadcrumb.Item>
       )}
-      {textThird && <Breadcrumb.Item active>{textThird}</Breadcrumb.Item>}
+      {textSecond && <Breadcrumb.Item active>{textSecond}</Breadcrumb.Item>}
     </Breadcrumb>
   );
 };
