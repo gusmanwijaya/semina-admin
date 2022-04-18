@@ -5,6 +5,9 @@ import {
   START_FETCHING_LIST_SPEAKER,
   SUCCESS_FETCHING_LIST_CATEGORY,
   SUCCESS_FETCHING_LIST_SPEAKER,
+  ERROR_FETCHING_LIST_EVENT,
+  START_FETCHING_LIST_EVENT,
+  SUCCESS_FETCHING_LIST_EVENT,
 } from "./types";
 
 const statuslist = {
@@ -19,6 +22,8 @@ const initialState = {
   statusCategory: statuslist.idle,
   speaker: [],
   statusSpeaker: statuslist.idle,
+  event: [],
+  statusEvent: statuslist.idle,
 };
 
 const reducers = (state = initialState, action) => {
@@ -47,6 +52,19 @@ const reducers = (state = initialState, action) => {
         ...state,
         statusSpeaker: statuslist.success,
         speaker: action.speaker,
+      };
+
+    case START_FETCHING_LIST_EVENT:
+      return { ...state, statusEvent: statuslist.process };
+
+    case ERROR_FETCHING_LIST_EVENT:
+      return { ...state, statusEvent: statuslist.error };
+
+    case SUCCESS_FETCHING_LIST_EVENT:
+      return {
+        ...state,
+        statusEvent: statuslist.success,
+        event: action.event,
       };
 
     default:
