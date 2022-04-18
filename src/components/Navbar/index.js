@@ -24,7 +24,6 @@ const ComponentNavbar = ({ payload }) => {
           <NavLink action={() => navigate("/category")}>Category</NavLink>
           <NavLink action={() => navigate("/speaker")}>Speaker</NavLink>
           <NavLink action={() => navigate("/event")}>Event</NavLink>
-          <NavLink action={() => navigate("/participant")}>Participant</NavLink>
           <NavLink action={() => navigate("/transaction")}>Transaction</NavLink>
         </Nav>
         <Nav>
